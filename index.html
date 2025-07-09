@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Opener</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #1e90ff;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 12px 20px;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    input[type="text"]:focus {
+      border-color: #1e90ff;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1em;
+      color: white;
+      background-color: #1e90ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #006edc;
+    }
+     .page-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    Identity Generators
+  </header>
+  <h1>Open a customer profile in Betler</h1>
+  <p>Please enter the Betler user ID:</p>
+  <input type="text" id="inputText" placeholder="c34d071d-eb62-41fa-a4e8-411ac8007057" />
+  <button onclick="openURL()">Open profile</button>
+
+  <script>
+    const input = document.getElementById("inputText");
+
+    function openURL() {
+      const userInput = input.value.trim();
+      if (userInput) {
+        const baseUrl = "https://bacoff.services.production.betler.superbet.com/customer/"; // Replace with your actual base URL
+        const fullUrl = baseUrl + encodeURIComponent(userInput);
+        window.open(fullUrl, "_blank");
+      } else {
+        alert("Please enter user ID.");
+      }
+    }
+
+    // Listen for Enter key
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        openURL();
+      }
+    });
+  </script>
+</body>
+</html>
